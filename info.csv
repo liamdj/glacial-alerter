@@ -1,0 +1,94 @@
+hotel_code,room_code,room_title,max_occupancy,hotel_title,latest_price
+GLCC,SQ2,Standard 2 Queen,4,"Cedar Creek Lodge (Columbia Falls, MT)",418.98999999999995
+GLCC,XK1,Suite 1 King,5,"Cedar Creek Lodge (Columbia Falls, MT)",458.98999999999995
+GLCC,XQ2,Suite 2 Queen,4,"Cedar Creek Lodge (Columbia Falls, MT)",428.98999999999995
+GLCC,SQ2A,ADA Standard 2 Queen,4,"Cedar Creek Lodge (Columbia Falls, MT)",418.98999999999995
+GLCC,DK1A,ADA Deluxe 1 King,4,"Cedar Creek Lodge (Columbia Falls, MT)",428.98999999999995
+GLCC,DK1R,Deluxe 1 King / ADA Roll-in Shower,4,"Cedar Creek Lodge (Columbia Falls, MT)",428.98999999999995
+GLCC,DQ2A,ADA Deluxe 2 Queen,6,"Cedar Creek Lodge (Columbia Falls, MT)",428.98999999999995
+GLCC,XK1A,ADA Suite 1 King,5,"Cedar Creek Lodge (Columbia Falls, MT)",458.98999999999995
+GLCC,XQ2A,ADA Suite 2 Queen,4,"Cedar Creek Lodge (Columbia Falls, MT)",428.98999999999995
+GLCC,DK1,Deluxe 1 King,4,"Cedar Creek Lodge (Columbia Falls, MT)",428.98999999999995
+GLCC,DQ2,Deluxe 2 Queen,6,"Cedar Creek Lodge (Columbia Falls, MT)",428.98999999999995
+GLLM,DK1A,Deluxe 1 King ADA ,2,Lake McDonald,597.0
+GLLM,DQ2,Deluxe 2 Queens ,4,Lake McDonald,597.0
+GLLM,DQ1,Deluxe 1 Queen ,2,Lake McDonald,597.0
+GLLM,SQ1U,Standard Value 1 Queen ,2,Lake McDonald,257.0
+GLLM,CK1LH,Large Deluxe Cabin 1 King ,2,Lake McDonald,599.0
+GLLM,CXQ1L,Large Cabin Suite 1 Queen and Sofa Sleeper,4,Lake McDonald,334.0
+GLLM,CXQ1LH,Large Deluxe Cabin Suite 1 Queen and Sofa Sleeper ,4,Lake McDonald,599.0
+GLLM,XQ1,Cobb Suite 1 Queen ,4,Lake McDonald,812.0
+GLLM,DQ1A,ADA Cobb Room 1 Queen,2,Lake McDonald,514.0
+GLLM,SB2XX,Snyder Hall Room/1 Set of Bunk Beds ,2,Lake McDonald,140.0
+GLLM,SD1XXA,ADA Snyder Hall Room/1 Double Full ,2,Lake McDonald,140.0
+GLLM,SD1XX,Snyder Hall Room/1 Double Full ,2,Lake McDonald,140.0
+GLLM,SQ1,Standard 1 Queen ,2,Lake McDonald,276.0
+GLLM,SDTA,ADA Lodge Room 1 Double Full and 1 Twin Single ,3,Lake McDonald,
+GLLM,CK1LHA,Large Deluxe Cabin 1 King ADA ,2,Lake McDonald,599.0
+GLLM,CD2TL,Large Cabin 2 Doubles Full and 1 Twin Single ,5,Lake McDonald,283.0
+GLLM,CD2LA,Large ADA Cabin 2 Doubles Full ,4,Lake McDonald,217.0
+GLLM,CD2,Small Cabin 2 Doubles Full ,4,Lake McDonald,203.0
+GLLM,CQ1LH,Large Deluxe Cabin 1 Queen ,2,Lake McDonald,599.0
+GLLM,CD1,Small Cabin 1 Double Full ,2,Lake McDonald,203.0
+GLLM,CQ1,Small Cabin 1 Queen ,2,Lake McDonald,203.0
+GLMG,DQ1,Deluxe Parkside 1 Queen ,2,Many Glacier Hotel,654.0
+GLMG,ST2U,Value 2 Twins ,2,Many Glacier Hotel,258.0
+GLMG,SD2U,Value 2 Doubles ,4,Many Glacier Hotel,258.0
+GLMG,SD1U,Value 1 Double ,2,Many Glacier Hotel,258.0
+GLMG,SDT,Standard Parkside 1 Double and 1 Twin ,3,Many Glacier Hotel,296.0
+GLMG,ST2,Standard Parkside 2 Twins ,2,Many Glacier Hotel,296.0
+GLMG,SD1Y,Standard Parkside 1 Double / Shared Balcony ,2,Many Glacier Hotel,313.0
+GLMG,SDTY,Standard Parkside 1 Double and 1 Twin / Shared Balcony ,3,Many Glacier Hotel,313.0
+GLMG,SD1V,Standard Lakeside 1 Double ,2,Many Glacier Hotel,313.0
+GLMG,SDTV,Standard Lakeside 1 Double and 1 Twin ,3,Many Glacier Hotel,313.0
+GLMG,ST2V,Standard Lakeside 2 Twins ,2,Many Glacier Hotel,313.0
+GLMG,ST2YV,Standard Lakeside 2 Twins / Shared Balcony ,2,Many Glacier Hotel,327.0
+GLMG,XD2T,Family Unit 2 Doubles and 1 Twin ,5,Many Glacier Hotel,396.0
+GLMG,SD1UA,Value ADA 1 Double ,2,Many Glacier Hotel,258.0
+GLMG,SDTVA,Standard Lakeside ADA 1 Double and 1 Twin ,3,Many Glacier Hotel,313.0
+GLMG,DK1,Deluxe Parkside 1 King ,3,Many Glacier Hotel,654.0
+GLMG,DQ1V,Deluxe Lakeside 1 Queen ,2,Many Glacier Hotel,687.0
+GLMG,DK1V,Deluxe Lakeside 1 King ,2,Many Glacier Hotel,687.0
+GLMG,DK1Y,Deluxe Parkside 1 King / Shared Balcony ,2,Many Glacier Hotel,687.0
+GLMG,DK1YV,Deluxe Lakeside 1 King / Shared Balcony ,2,Many Glacier Hotel,716.0
+GLMG,DQ1Y,Deluxe Parkside 1 Queen / Shared Balcony ,2,Many Glacier Hotel,687.0
+GLMG,DQ1YA,Deluxe Parkside ADA 1 Queen / Shared Balcony ,2,Many Glacier Hotel,687.0
+GLMG,DQ1YV,Deluxe Lakeside 1 Queen / Shared Balcony ,2,Many Glacier Hotel,716.0
+GLMG,DQ1YVA,Deluxe Lakeside ADA 1 Queen / Shared Balcony ,2,Many Glacier Hotel,716.0
+GLMG,XD2TA,Family Unit ADA 2 Doubles & 1 Twin ,5,Many Glacier Hotel,396.0
+GLMG,SDTU,Value 1 Double and 1 Twin,3,Many Glacier Hotel,258.0
+GLMG,SD2,Standard Parkside 2 Doubles,4,Many Glacier Hotel,296.0
+GLMG,ST2Y,Standard Parkside 2 Twins/Shared Balcony ,2,Many Glacier Hotel,313.0
+GLMG,SD2V,Standard Lakeside 2 Doubles,4,Many Glacier Hotel,313.0
+GLMG,SD1YV,Standard Lakeside 1 Double/Shared Balcony,2,Many Glacier Hotel,327.0
+GLMG,SD1,Standard Parkside 1 Double,2,Many Glacier Hotel,296.0
+GLMG,SK1A,Standard Parkside ADA 1 King,2,Many Glacier Hotel,296.0
+GLMG,SD1A,Standard Parkside ADA 1 Double,2,Many Glacier Hotel,296.0
+GLMG,XKQYV,Lakeside Suite 1 King and 1 Queen / Shared Balcony,5,Many Glacier Hotel,964.0
+GLRS,CD2,Cabin 2 Doubles Full ,4,Rising Sun Motor Inn & Cabins,207.9
+GLRS,SD2,Store Motel 2 Doubles Full ,4,Rising Sun Motor Inn & Cabins,210.6
+GLRS,SQ1,Store Motel 1 Queen ,2,Rising Sun Motor Inn & Cabins,210.6
+GLRS,SD2M,Motor Inn 2 Doubles Full ,4,Rising Sun Motor Inn & Cabins,225.9
+GLRS,SQ1MA,Motor Inn 1 Queen ADA ,2,Rising Sun Motor Inn & Cabins,225.9
+GLRS,SQ1M,Motor Inn 1 Queen ,2,Rising Sun Motor Inn & Cabins,225.9
+GLRS,CQ1,Cabin 1 Queen ,2,Rising Sun Motor Inn & Cabins,207.9
+GLRS,SD2MA,Motor Inn 2 Doubles Full ADA ,4,Rising Sun Motor Inn & Cabins,
+GLSC,CD1,Historic Cabin 1 Double Full ,2,Swiftcurrent Motor Inn & Cabins,
+GLSC,SD2M,Motor Inn Room 2 Doubles Full ,4,Swiftcurrent Motor Inn & Cabins,251.0
+GLSC,SDTM,Motor Inn Room 1 Double Full and 1 Twin Single ,3,Swiftcurrent Motor Inn & Cabins,251.0
+GLSC,ST2MA,Motor Inn Room ADA 2 Twins Single ,2,Swiftcurrent Motor Inn & Cabins,
+GLSC,SD2MA,Motor Inn Room ADA 2 Doubles Full ,4,Swiftcurrent Motor Inn & Cabins,
+GLSC,CD1XX,Historic Cabin 1 Double Full/No Bathroom ,2,Swiftcurrent Motor Inn & Cabins,149.0
+GLSC,CD2XX,Historic Cabin 2 Doubles Full/No Bathroom ,4,Swiftcurrent Motor Inn & Cabins,182.0
+GLSC,CD2HA,ADA Cabin 2 Doubles Full ,4,Swiftcurrent Motor Inn & Cabins,195.0
+GLSC,CD1H,Cabin 1 Double Full ,2,Swiftcurrent Motor Inn & Cabins,195.0
+GLSC,CD1HL,Large Cabin 1 Double Full ,4,Swiftcurrent Motor Inn & Cabins,231.0
+GLSC,SQ1M,Motor Inn Room 1 Queen,2,Swiftcurrent Motor Inn & Cabins,251.0
+GLSC,SQ1,Pinetop Room 1 Queen,2,Swiftcurrent Motor Inn & Cabins,234.0
+GLVI,SQ1,Motel Room 1 Queen ,2,Village Inn at Apgar,234.0
+GLVI,SD1A,Motel Room 1 Double Full ADA ,2,Village Inn at Apgar,234.0
+GLVI,XQ2T,Family Room 2 Queens and 1 Twin Single Bed ,5,Village Inn at Apgar,321.0
+GLVI,SQ2K,Kitchen 2 Queen Beds ,4,Village Inn at Apgar,387.0
+GLVI,SK1K,Kitchen 1 King ,2,Village Inn at Apgar,387.0
+GLVI,XQ2KA,Kitchen 2 Queen Beds ADA ,4,Village Inn at Apgar,406.0
+GLVI,XXQ2,Family Unit 2 Queens and Living Room ,6,Village Inn at Apgar,406.0

@@ -14,7 +14,7 @@ from login import ADDRESS, PASSWORD
 # url base for get requests
 API = "https://webapi.xanterra.net/v1/api"
 # saved hotel rooms names
-TITLES = Path(__file__).parent / "titles.csv"
+INFO = Path(__file__).parent / "info.csv"
 # data collected from last run
 LAST = Path(__file__).parent / "last.csv"
 # all historical data
@@ -29,11 +29,11 @@ def get_hotel_titles() -> pd.DataFrame:
     )
 
 
-def get_room_titles(hotel_code: str) -> pd.DataFrame:
+def get_room_info(hotel_code: str) -> pd.DataFrame:
     resp = requests.get(API + "/property/rooms/glaciernationalparklodges/" + hotel_code)
     rooms = resp.json().values()
     return pd.DataFrame(
-        [(r["code"], r["title"]) for r in rooms], columns=["room_code", "room_title"]
+        [(r["code"], r["title"], r["occupancyMax"]) for r in rooms], columns=["room_code", "room_title", "max_occupancy"]
     )
 
 
@@ -41,7 +41,7 @@ def get_hotel_rooms() -> pd.DataFrame:
     hotels = get_hotel_titles()
     rooms = pd.concat(
         [
-            get_room_titles(code).assign(hotel_code=code)
+            get_room_info(code).assign(hotel_code=code)
             for code in hotels["hotel_code"].unique()
         ]
     )
@@ -51,8 +51,8 @@ def get_hotel_rooms() -> pd.DataFrame:
 def get_room_availability(
     hotel_code: str, start_date: pd.Timestamp, num_days: int
 ) -> pd.DataFrame:
-    # we don't want to submit requests too quickly
-    sleep(1)
+    # we want to avoid submit requests too quickly
+    sleep(0.1)
     date_str = start_date.strftime("%m/%d/%Y")
     resp = requests.get(
         API + "/availability/rooms/glaciernationalparklodges/" + hotel_code,
@@ -133,7 +133,7 @@ def send_room_updates(changes: pd.DataFrame, recipients: list):
             changes["closed"], ["date", "hotel_title", "room_title", "link"]
         ].to_string(index=False, header=False, justify="left")
         body += (
-            "The following hotel rooms have became <b>unavailable</b>:<br><p>"
+            "The following hotel rooms have became <b>unavailable</b>:<hr><p>"
             + closed_str
             + "</p><hr>"
         )
@@ -153,13 +153,12 @@ def run_update(
     recipients: list,
 ):
     # get all hotels and rooms
-    if TITLES.exists():
-        titles = (
-            pd.read_csv(TITLES).set_index(["hotel_code", "room_code"]).drop_duplicates()
+    if INFO.exists():
+        info = (
+            pd.read_csv(INFO).set_index(["hotel_code", "room_code"]).drop_duplicates()
         )
     else:
-        titles = get_hotel_rooms().set_index(["hotel_code", "room_code"])
-        titles.reset_index().to_csv(TITLES, index=False)
+        info = get_hotel_rooms().set_index(["hotel_code", "room_code"])
     # read previously-gathered data
     if LAST.exists():
         last = pd.read_csv(LAST, parse_dates=["date"]).set_index(
@@ -170,7 +169,7 @@ def run_update(
     new_df = pd.concat(
         [
             get_room_availability(code, start_date, num_days)
-            for code in titles.index.unique(level="hotel_code")
+            for code in info.index.unique(level="hotel_code")
         ]
     )
     current = new_df.set_index(["date", "hotel_code", "room_code"])["available"]
@@ -178,6 +177,8 @@ def run_update(
     # save data
     new_df.to_csv(SAVED, mode="a", header=not SAVED.exists(), index=False)
     current.to_csv(LAST, mode="w")
+    info["latest_price"] = new_df.groupby(["hotel_code", "room_code"])["price"].mean().reindex(info.index)
+    info.to_csv(INFO)
 
     # send updates
     last = last.reindex(index=current.index, fill_value=0)
@@ -188,7 +189,7 @@ def run_update(
 
     now_str = pd.Timestamp.now().strftime("%Y-%m-%d %X")
     if changes.sum().sum() > 0:
-        send_room_updates(changes.join(titles).reset_index(), recipients)
+        send_room_updates(changes.join(info).reset_index(), recipients)
         print(f"Sent email with room updates at {now_str}")
     else:
         print(f"No room updates to send at {now_str}")
@@ -201,6 +202,7 @@ def main():
     parser.add_argument("--alerts_file", type=argparse.FileType("r"), required=True)
     parser.add_argument("--save_file", type=argparse.FileType("w"), default=None)
     parser.add_argument("--recipients", type=str, nargs="*")
+    parser.add_argument("--interval", type=int, default=60)
     args = parser.parse_args()
     dates = pd.date_range(args.start_date, args.end_date)
     assert len(dates) > 0
@@ -213,11 +215,10 @@ def main():
     alert_on = pd.DataFrame(rows, columns=["date", "hotel_code", "room_code"])
 
     func = partial(run_update, min(dates), len(dates), alert_on, args.recipients)
-    # run once to start
     func()
-    # then run on the hour every hour
+    # run periodically
     sched = BlockingScheduler()
-    sched.add_job(func, "cron", minute=0)
+    sched.add_job(func, "interval", minutes=args.interval)
     sched.start()
 
 
