@@ -5,15 +5,23 @@
             {
                 "hotel_code": "GLMG", 
                 "room_codes": ["XD2T", "XD2TA", "SD1V", "SDTV", "SD1YV", "SD2V", "SDTVA", "SD1", "SD1Y", "SD2", "ST2", "SD2Y", "SD1A"]
+            },
+            {
+                "hotel_code": "GLSC",
+                "room_codes": ["CD1", "SD2M", "SDTM", "ST2MA", "SD2MA", "CD2HA", "CD1H", "CD1HL", "SQ1M", "SQ1"]
             }
         ]
     },
     {
-        "dates": ["2024-09-01", "2024-09-03"],
+        "dates": ["2024-09-01", "2024-09-02", "2024-09-03"],
         "hotels": [
             {
                 "hotel_code": "GLLM",
                 "room_codes": ["DQ2", "SQ1", "SQ1U"]
+            },
+            {
+                "hotel_code": "GLVI",
+                "room_codes": ["SQ1", "SD1A", "SK1K", "XXQ2"]
             }
         ] 
     }
