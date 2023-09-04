@@ -1,0 +1,20 @@
+[
+    {
+        "dates": ["2024-09-04", "2024-09-05", "2024-09-06", "2024-09-07", "2024-09-08"],
+        "hotels": [
+            {
+                "hotel_code": "GLMG", 
+                "room_codes": ["XD2T", "XD2TA", "SD1V", "SDTV", "SD1YV", "SD2V", "SDTVA", "SD1", "SD1Y", "SD2", "ST2", "SD2Y", "SD1A"]
+            }
+        ]
+    },
+    {
+        "dates": ["2024-09-01", "2024-09-03"],
+        "hotels": [
+            {
+                "hotel_code": "GLLM",
+                "room_codes": ["DQ2", "SQ1", "SQ1U"]
+            }
+        ] 
+    }
+]
