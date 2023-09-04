@@ -18,5 +18,6 @@ To find the codes corresponding to hotels and rooms, refer to `titles.csv`. This
 The alerts file contains json objects with lists of dates and lists of odjects with a hotel_code and list of room codes. See `alert.json`.
 
 ## example usage
-```python3 glacier_alert.py --start_date 2024-08-31 --end_date 2024-09-09 --alerts_file alert.json --recipients some.address@gmail.com
+```
+python3 glacier_alert.py --start_date 2024-08-31 --end_date 2024-09-09 --alerts_file alert.json --recipients some.address@gmail.com
 ```
