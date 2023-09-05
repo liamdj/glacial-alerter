@@ -11,6 +11,8 @@ from time import sleep
 from apscheduler.schedulers.blocking import BlockingScheduler
 from login import ADDRESS, PASSWORD
 
+MAX_DAYS_REQUEST = 31
+
 # url base for get requests
 API = "https://webapi.xanterra.net/v1/api"
 # saved hotel rooms names
@@ -52,7 +54,7 @@ def get_room_availability(
     hotel_code: str, start_date: pd.Timestamp, num_days: int
 ) -> pd.DataFrame:
     # we want to avoid submit requests too quickly
-    sleep(0.1)
+    sleep(0.010)
     date_str = start_date.strftime("%m/%d/%Y")
     resp = requests.get(
         API + "/availability/rooms/glaciernationalparklodges/" + hotel_code,
@@ -148,7 +150,7 @@ def send_room_updates(changes: pd.DataFrame, recipients: list):
 
 def run_update(
     start_date: pd.Timestamp,
-    num_days: int,
+    end_date: pd.Timestamp,
     alert_on: pd.DataFrame,
     recipients: list,
 ):
@@ -166,27 +168,34 @@ def run_update(
         )["available"]
     else:
         last = pd.Series(name="available", dtype=int)
+    dates = pd.date_range(start_date, end_date)
+    date_chunks = [dates[i:i+MAX_DAYS_REQUEST] for i in range(0, len(dates), MAX_DAYS_REQUEST)]
     new_df = pd.concat(
         [
-            get_room_availability(code, start_date, num_days)
+            get_room_availability(code, min(chunk), len(chunk))
             for code in info.index.unique(level="hotel_code")
+            for chunk in date_chunks
         ]
-    )
-    current = new_df.set_index(["date", "hotel_code", "room_code"])["available"]
+    ).set_index(["date", "hotel_code", "room_code"])
 
-    # save data
-    new_df.to_csv(SAVED, mode="a", header=not SAVED.exists(), index=False)
-    current.to_csv(LAST, mode="w")
-    info["latest_price"] = new_df.groupby(["hotel_code", "room_code"])["price"].mean().reindex(info.index)
-    info.to_csv(INFO)
-
-    # send updates
+    # get changes
+    current = new_df["available"]
     last = last.reindex(index=current.index, fill_value=0)
     changes = pd.DataFrame()
     changes["opened"] = (current > 0) & (last == 0)
     changes["closed"] = (current == 0) & (last > 0)
     changes = changes.reindex(pd.MultiIndex.from_frame(alert_on), fill_value=False)
 
+    # save data
+    if SAVED.exists():
+        new_df.loc[current != last].to_csv(SAVED, header=False, mode="a")
+    else:
+        new_df.to_csv(SAVED, header=True)
+    current.to_csv(LAST)
+    info["latest_price"] = new_df.groupby(["hotel_code", "room_code"])["price"].mean().round(2).reindex(info.index)
+    info.to_csv(INFO)
+
+    # send updates
     now_str = pd.Timestamp.now().strftime("%Y-%m-%d %X")
     if changes.sum().sum() > 0:
         send_room_updates(changes.join(info).reset_index(), recipients)
@@ -202,10 +211,10 @@ def main():
     parser.add_argument("--alerts_file", type=argparse.FileType("r"), required=True)
     parser.add_argument("--save_file", type=argparse.FileType("w"), default=None)
     parser.add_argument("--recipients", type=str, nargs="*")
-    parser.add_argument("--interval", type=int, default=60)
+    # parser.add_argument("--interval", type=int, default=60)
     args = parser.parse_args()
     dates = pd.date_range(args.start_date, args.end_date)
-    assert len(dates) > 0
+    assert len(dates) >= 1
     rows = []
     for entry in json.load(args.alerts_file):
         for date in entry["dates"]:
@@ -214,11 +223,11 @@ def main():
                     rows.append((date, hotel["hotel_code"], code))
     alert_on = pd.DataFrame(rows, columns=["date", "hotel_code", "room_code"])
 
-    func = partial(run_update, min(dates), len(dates), alert_on, args.recipients)
-    func()
-    # run periodically
+    func = partial(run_update, args.start_date, args.end_date, alert_on, args.recipients)
     sched = BlockingScheduler()
-    sched.add_job(func, "interval", minutes=args.interval)
+    # room updates seem to happen around these minutes each hour
+    for mins in [11, 26, 41, 56]:
+        sched.add_job(func, "cron", minute=mins, second=20)
     sched.start()
 
 

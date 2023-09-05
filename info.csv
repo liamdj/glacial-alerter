@@ -1,15 +1,15 @@
 hotel_code,room_code,room_title,max_occupancy,hotel_title,latest_price
-GLCC,SQ2,Standard 2 Queen,4,"Cedar Creek Lodge (Columbia Falls, MT)",418.98999999999995
-GLCC,XK1,Suite 1 King,5,"Cedar Creek Lodge (Columbia Falls, MT)",458.98999999999995
-GLCC,XQ2,Suite 2 Queen,4,"Cedar Creek Lodge (Columbia Falls, MT)",428.98999999999995
-GLCC,SQ2A,ADA Standard 2 Queen,4,"Cedar Creek Lodge (Columbia Falls, MT)",418.98999999999995
-GLCC,DK1A,ADA Deluxe 1 King,4,"Cedar Creek Lodge (Columbia Falls, MT)",428.98999999999995
-GLCC,DK1R,Deluxe 1 King / ADA Roll-in Shower,4,"Cedar Creek Lodge (Columbia Falls, MT)",428.98999999999995
-GLCC,DQ2A,ADA Deluxe 2 Queen,6,"Cedar Creek Lodge (Columbia Falls, MT)",428.98999999999995
-GLCC,XK1A,ADA Suite 1 King,5,"Cedar Creek Lodge (Columbia Falls, MT)",458.98999999999995
-GLCC,XQ2A,ADA Suite 2 Queen,4,"Cedar Creek Lodge (Columbia Falls, MT)",428.98999999999995
-GLCC,DK1,Deluxe 1 King,4,"Cedar Creek Lodge (Columbia Falls, MT)",428.98999999999995
-GLCC,DQ2,Deluxe 2 Queen,6,"Cedar Creek Lodge (Columbia Falls, MT)",428.98999999999995
+GLCC,SQ2,Standard 2 Queen,4,"Cedar Creek Lodge (Columbia Falls, MT)",418.99
+GLCC,XK1,Suite 1 King,5,"Cedar Creek Lodge (Columbia Falls, MT)",458.99
+GLCC,XQ2,Suite 2 Queen,4,"Cedar Creek Lodge (Columbia Falls, MT)",428.99
+GLCC,SQ2A,ADA Standard 2 Queen,4,"Cedar Creek Lodge (Columbia Falls, MT)",418.99
+GLCC,DK1A,ADA Deluxe 1 King,4,"Cedar Creek Lodge (Columbia Falls, MT)",428.99
+GLCC,DK1R,Deluxe 1 King / ADA Roll-in Shower,4,"Cedar Creek Lodge (Columbia Falls, MT)",428.99
+GLCC,DQ2A,ADA Deluxe 2 Queen,6,"Cedar Creek Lodge (Columbia Falls, MT)",428.99
+GLCC,XK1A,ADA Suite 1 King,5,"Cedar Creek Lodge (Columbia Falls, MT)",458.99
+GLCC,XQ2A,ADA Suite 2 Queen,4,"Cedar Creek Lodge (Columbia Falls, MT)",428.99
+GLCC,DK1,Deluxe 1 King,4,"Cedar Creek Lodge (Columbia Falls, MT)",428.99
+GLCC,DQ2,Deluxe 2 Queen,6,"Cedar Creek Lodge (Columbia Falls, MT)",428.99
 GLLM,DK1A,Deluxe 1 King ADA ,2,Lake McDonald,597.0
 GLLM,DQ2,Deluxe 2 Queens ,4,Lake McDonald,597.0
 GLLM,DQ1,Deluxe 1 Queen ,2,Lake McDonald,597.0

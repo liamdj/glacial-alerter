@@ -1,7 +1,7 @@
 # glacial-alerter
 Script to send periodic updates about room availability for Glacial National Park
 
-By default, the script runs every hour. It sends email updates whenever the number of available rooms changes between zeros and non-zero for any date, hotel, room tuple given in the alerts file. It saves historical availability info for all rooms over the specified date range.
+By default, the script runs every 15 minutes. These times should be around the times that the website publishes room updates. It sends emails whenever the number of available rooms changes between zeros and non-zero for any (date, hotel, room) tuple as specified in the alerts file. It saves historical availability data for all rooms over the specified date range.
 
 ## email account
 You must specify a gmail account in a file called `login.py` with content:
