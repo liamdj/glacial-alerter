@@ -100,7 +100,8 @@ def get_room_availability(
 
 
 def make_link(hotel_code: str, date: pd.Timestamp) -> str:
-    date_str = date.strftime("%m-%d-%Y")
+    # somewhere this became a string
+    date_str = pd.to_datetime(date).strftime("%m-%d-%Y")
     req = requests.Request(
         "GET",
         "https://secure.glaciernationalparklodges.com/booking/lodging-select",
@@ -186,6 +187,14 @@ def run_update(
     changes["closed"] = (current == 0) & (last > 0)
     changes = changes.reindex(pd.MultiIndex.from_frame(alert_on), fill_value=False)
 
+    # send updates
+    now_str = pd.Timestamp.now().strftime("%Y-%m-%d %X")
+    if changes.sum().sum() > 0:
+        send_room_updates(changes.join(info).reset_index(), recipients)
+        print(f"Sent email with room updates at {now_str}")
+    else:
+        print(f"No room updates to send at {now_str}")
+
     # save data
     if SAVED.exists():
         new_df.loc[current != last].to_csv(SAVED, header=False, mode="a")
@@ -195,21 +204,12 @@ def run_update(
     info["latest_price"] = new_df.groupby(["hotel_code", "room_code"])["price"].mean().round(2).reindex(info.index)
     info.to_csv(INFO)
 
-    # send updates
-    now_str = pd.Timestamp.now().strftime("%Y-%m-%d %X")
-    if changes.sum().sum() > 0:
-        send_room_updates(changes.join(info).reset_index(), recipients)
-        print(f"Sent email with room updates at {now_str}")
-    else:
-        print(f"No room updates to send at {now_str}")
-
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--start_date", type=pd.Timestamp, required=True)
     parser.add_argument("--end_date", type=pd.Timestamp, required=True)
     parser.add_argument("--alerts_file", type=argparse.FileType("r"), required=True)
-    parser.add_argument("--save_file", type=argparse.FileType("w"), default=None)
     parser.add_argument("--recipients", type=str, nargs="*")
     # parser.add_argument("--interval", type=int, default=60)
     args = parser.parse_args()

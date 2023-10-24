@@ -5,10 +5,6 @@
             {
                 "hotel_code": "GLMG", 
                 "room_codes": ["XD2T", "XD2TA", "SD1V", "SDTV", "SD1YV", "SD2V", "SDTVA", "SD1", "SD1Y", "SD2", "ST2", "SD2Y", "SD1A"]
-            },
-            {
-                "hotel_code": "GLSC",
-                "room_codes": ["CD1", "SD2M", "SDTM", "ST2MA", "SD2MA", "CD2HA", "CD1H", "CD1HL", "SQ1M", "SQ1"]
             }
         ]
     },
